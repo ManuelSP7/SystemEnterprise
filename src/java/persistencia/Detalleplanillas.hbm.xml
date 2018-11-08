@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-08-2018 03:37:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="persistencia.Detalleplanillas" table="detalleplanillas" catalog="enterprisesystem" optimistic-lock="version">
+        <id name="idDetalle" type="java.lang.Integer">
+            <column name="idDetalle" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="empleados" class="persistencia.Empleados" fetch="select">
+            <column name="idempleado" />
+        </many-to-one>
+        <many-to-one name="planillas" class="persistencia.Planillas" fetch="select">
+            <column name="idplanilla" />
+        </many-to-one>
+        <property name="salarioBase" type="big_decimal">
+            <column name="salarioBase" precision="8" />
+        </property>
+        <property name="bono" type="big_decimal">
+            <column name="bono" precision="8" />
+        </property>
+        <property name="isss" type="big_decimal">
+            <column name="isss" precision="8" />
+        </property>
+        <property name="renta" type="big_decimal">
+            <column name="renta" precision="8" />
+        </property>
+        <property name="afp" type="big_decimal">
+            <column name="afp" precision="8" />
+        </property>
+        <property name="salarioNeto" type="big_decimal">
+            <column name="salarioNeto" precision="8" />
+        </property>
+        <property name="aguinaldo" type="big_decimal">
+            <column name="aguinaldo" precision="8" />
+        </property>
+        <property name="horasExtras" type="big_decimal">
+            <column name="horasExtras" precision="8" />
+        </property>
+    </class>
+</hibernate-mapping>

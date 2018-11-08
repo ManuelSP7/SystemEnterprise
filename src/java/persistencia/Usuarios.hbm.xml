@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-08-2018 03:37:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="persistencia.Usuarios" table="usuarios" catalog="enterprisesystem" optimistic-lock="version">
+        <id name="idusuario" type="java.lang.Integer">
+            <column name="idusuario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="empresas" class="persistencia.Empresas" fetch="select">
+            <column name="idempresa" />
+        </many-to-one>
+        <property name="nombres" type="string">
+            <column name="nombres" length="20" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="20" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="10" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

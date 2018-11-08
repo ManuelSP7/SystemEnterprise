@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-08-2018 03:37:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="persistencia.Empresas" table="empresas" catalog="enterprisesystem" optimistic-lock="version">
+        <id name="idempresa" type="java.lang.Integer">
+            <column name="idempresa" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="nit" type="string">
+            <column name="nit" length="18" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="200" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="20" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <set name="sucursaleses" table="sucursales" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempresa" />
+            </key>
+            <one-to-many class="persistencia.Sucursales" />
+        </set>
+        <set name="usuarioses" table="usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempresa" />
+            </key>
+            <one-to-many class="persistencia.Usuarios" />
+        </set>
+    </class>
+</hibernate-mapping>

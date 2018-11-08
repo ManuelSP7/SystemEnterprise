@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-08-2018 03:37:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="persistencia.Empleados" table="empleados" catalog="enterprisesystem" optimistic-lock="version">
+        <id name="idempleado" type="java.lang.Integer">
+            <column name="idempleado" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sucursales" class="persistencia.Sucursales" fetch="select">
+            <column name="idsucursal" />
+        </many-to-one>
+        <property name="estado" type="string">
+            <column name="estado" length="10" />
+        </property>
+        <property name="codigoEmpleado" type="string">
+            <column name="codigoEmpleado" length="10" unique="true" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="nombres" length="20" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="20" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="45" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="20" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fechaNacimiento" length="10" />
+        </property>
+        <property name="cargo" type="string">
+            <column name="cargo" length="45" />
+        </property>
+        <property name="salario" type="big_decimal">
+            <column name="salario" precision="8" />
+        </property>
+        <set name="detalleplanillases" table="detalleplanillas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempleado" />
+            </key>
+            <one-to-many class="persistencia.Detalleplanillas" />
+        </set>
+    </class>
+</hibernate-mapping>

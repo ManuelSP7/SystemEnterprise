@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-08-2018 03:37:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="persistencia.Planillas" table="planillas" catalog="enterprisesystem" optimistic-lock="version">
+        <id name="idplanillas" type="java.lang.Integer">
+            <column name="idplanillas" />
+            <generator class="identity" />
+        </id>
+        <property name="fechaInicio" type="date">
+            <column name="fechaInicio" length="10" />
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fechaFin" length="10" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="10" />
+        </property>
+        <set name="detalleplanillases" table="detalleplanillas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idplanilla" />
+            </key>
+            <one-to-many class="persistencia.Detalleplanillas" />
+        </set>
+    </class>
+</hibernate-mapping>
